@@ -1,0 +1,26 @@
+[
+  {
+    "date": "1987-04-01",
+    "title": "Redbull was founded",
+    "desc": "Red Bull was launched in Austria on April 1, 1987, creating a new product category for energy drinks. Founded by Dietrich Mateschitz, it was inspired by functional drinks from East Asia and reformulated to suit European tastes. The brand quickly expanded internationally, entering the US market in 1997.",
+    "link": "https://en.wikipedia.org/wiki/Red_Bull"
+  },
+  {
+    "date": "0330-05-11",
+    "title": "The Byzantine Empire was founded.",
+    "desc": "The Byzantine Empire (c. 330–1453) was the long-lasting eastern continuation of the Roman Empire, centered in Constantinople. It served as a major power in the Mediterranean, preserving Greek and Roman knowledge while embracing Eastern Orthodox Christianity. ",
+    "link": "https://en.wikipedia.org/wiki/Byzantine_Empire"
+  },
+  {
+    "date": "2022-09-21",
+    "title": "Russia declared its first draft",
+    "desc": "Russia declared that it was initiating a \"partial mobilization\" of military reservists to bolster the country's war effort against Ukraine.",
+    "link": "https://en.wikipedia.org/wiki/2022_Russian_mobilization"
+  },
+  {
+    "date": "2022-02-24",
+    "title": "Russia invaded Ukraine",
+    "desc": "Russia launched a full-scale invasion of Ukraine, marking the largest conflict in Europe since World War II. Following President Vladimir Putin's announcement of a \"special military operation,\" Russian forces entered from Russia, Belarus, and Crimea, targeting cities nationwide and aiming to capture Kyiv.",
+    "link": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+  }
+]

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* main stuff */
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin: 0 2rem;
+    }
+    body {
+        padding: 0 0 5rem;
+    }
+    h1, h2, h3, h4 {
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-bottom: 0rem;
+    }
+    h1, h3 {
+        text-align: center;
+        color: rgb(172, 126, 9);
+    }
+    input, textarea, button {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* sections */
+    .section-hero {
+        padding: 0 0 2rem;
+
+    }
+    .section-hero__wrapper {
+        padding: 2rem;
+        background: rgb(244, 244, 231);
+        overflow: hidden;
+        border-bottom-left-radius: 75rem 5rem;
+        border-bottom-right-radius: 75rem 5rem;
+    }
+
+    #section-events__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 80%;
+    }
+    .section-events__card {
+        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.15);
+        padding: 1rem;
+        border-radius: 1rem;
+        border-color: black;
+        border-width: 0.1rem;
+        border-style: solid;
+    }
+
+    /* Footer */
+    .footer {
+        margin: 2rem 0;
+    }
+
+    /* Add new popup */
+    #modal-addnew {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* dark overlay */
+        display: none; /* flex / none */
+        justify-content: center;
+        align-items: center;
+    }
+
+    #modal-addnew h4 {
+        margin-top: 0.5rem;
+    }
+
+    .modal-addnew__card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        background-color: whitesmoke;
+        padding: 3rem;
+        border-radius: 1rem;
+        border-color: black;
+        border-width: 0.1rem;
+        border-style: solid;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #input-addnewDesc {
+        min-width: 10rem;
+        min-height: 3rem;
+    }
+
+    .modal-addnew__btns {
+        width: 100%; 
+        display: flex; 
+        gap: 0.5rem;
+    }
+</style>
+</head>
+<body>
+    <section class="section-hero">
+        <div class="section-hero__wrapper">
+            <div class="container">
+                <div> <!-- headers and stuff -->
+                    <h1>History Timeline</h1>
+                    <p>
+                        Enter a date and see everything that happened on that date.
+                    </p>
+                </div>
+                <div> <!-- Date and time -->
+                    <input type="date" id="hero-date">
+                </div>
+                <div>
+                    <button id="hero-btnGen">Generate</button>
+                    <button id="hero-btnAddnew">Add New</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section> <!-- section-events -->
+        <div class="container">
+            <h3 id="section-events__headline">What happened on April 1st 1987?</h3>
+            <div id="section-events__cards">
+                <div class="section-events__card">
+                    <h4>Something happened - Read more</h4>
+                    <p> Short description about what happened. Short description about what happened. Short description about what happened.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <p>
+                    Created by <a href="https://github.com/pattles/" target="_blank">Patrik</a> on March 12 2026
+                </p>
+            </div>
+        </div>
+    </footer>
+    <div id="modal-addnew"> <!-- popup modal -->
+        <div class="container" style="height: 100%">
+            <div class="modal-addnew__card">
+                <h4>Enter event details</h4>
+                <input type="date" id="input-addnewDate">
+                <input placeholder="title" id="input-addnewTitle">
+                <textarea id="input-addnewDesc" placeholder="description"></textarea>
+                <input id="input-addnewLink" placeholder="relevant links (optional)">
+                <div class="modal-addnew__btns">
+                    <button style="flex: 1;" id="modal-addnewSubmit">Submit</button>
+                    <button style="flex: 1;" id="modal-addnewClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // Formatting dates into readable ones
+    function formatDate(dateStr) {
+        const date = new Date(dateStr + 'T00:00:00');
+        const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.getFullYear();
+        const day = date.getDate();
+
+        const suffix = day === 1 || day === 21 || day === 31 ? 'st' :
+            day === 2 || day === 22 ? 'nd' :
+            day === 3 || day === 23 ? 'rd' : 'th';
+    
+        return `${month} ${day}${suffix} ${year}`;
+    };
+    
+    // On page load
+    let allEvents = []
+
+    fetch('/get-events')
+        .then(res => res.json())
+        .then(events => {
+            allEvents = events;
+        });
+
+
+    // # Adding a new card on button press
+    const heroBtnGen = document.getElementById('hero-btnGen');
+
+    const cardsContainer = document.getElementById('section-events__cards');
+    heroBtnGen.addEventListener('click', () => {
+        // Clearing everything first under the div
+        document.getElementById('section-events__cards').innerHTML = '';
+
+
+        // Getting all relevant events
+        const heroDate = document.getElementById('hero-date').value;
+        const results = allEvents.filter(event => event.date === heroDate);
+
+        // Changing headline -> What happened on [date]?
+        document.getElementById('section-events__headline').innerHTML = `What happened on ${formatDate(heroDate)}?`;
+
+        if (results.length === 0) {
+            // Create a bogus card
+            const card = document.createElement('div');
+            card.classList.add('section-events__card');
+            card.innerHTML = `
+                <h4>Nothing happened!</h4>
+                <p>Just kidding, I didn\'t add anything for this date</p>
+            `;
+            cardsContainer.appendChild(card); 
+        } else {
+            // Creating a new card for each event
+            results.forEach(event => {
+                const card = document.createElement('div');
+                card.classList.add('section-events__card');
+                card.innerHTML = `
+                    <h4>${event.title}${event.link ? ` - <a href="${event.link}" target="_blank">Read more</a>` : ''}</h4>
+                    <p>${event.desc}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+    });
+
+    // # Making a popup
+    const modalAddnew = document.getElementById('modal-addnew')
+    const heroBtnAddnew = document.getElementById('hero-btnAddnew');
+
+    // Making the popup visible on click
+    heroBtnAddnew.addEventListener('click', () => {
+       modalAddnew.style.display = "flex";
+    });
+
+    // Storing the content from popup
+    const modalBtnSubmit = document.getElementById('modal-addnewSubmit');
+
+    modalBtnSubmit.addEventListener('click', () => {
+        // Getting event date & time
+        const date = document.getElementById('input-addnewDate').value
+
+        // Getting event content
+        const title = document.getElementById('input-addnewTitle').value;
+        const desc = document.getElementById('input-addnewDesc').value;
+        const link = document.getElementById('input-addnewLink').value;
+
+        fetch('/add-event', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({date, title, desc, link})
+        });
+
+        location.reload()
+    }); 
+
+    // Closing the popup
+    const modalBtnClose = document.getElementById('modal-addnewClose')
+
+    modalBtnClose.addEventListener('click', () => {
+        modalAddnew.style.display = "none";
+    });
+
+
+</script>
+</html>
