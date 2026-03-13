@@ -139,6 +139,9 @@
             <div>
                 Created by <a href="https://github.com/pattles/" target="_blank">Patrik</a> on March 12 2026 - <a href="https://github.com/Pattles/HistoryTimeline" target="_blank">Github</a>
             </div>
+            <div>
+                v1.0
+            </div>
         </div>
     </footer>
     <div id="modal-addnew"> <!-- popup modal -->
@@ -246,9 +249,9 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({date, title, desc, link})
+        }).then(() => {
+            location.reload();
         });
-
-        location.reload()
     }); 
 
     // Closing the popup
