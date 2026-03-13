@@ -34,5 +34,53 @@
     "title": "World War II ended",
     "desc": "World War I officially ended with the signing of the armistice between the Allies and Germany on November 11, 1918, at 11:00 a.m. (the \"eleventh hour of the eleventh day of the eleventh month\"), ending the fighting on the Western Front. While this date is recognized as the end of the war, formal peace treaties were signed later, such as the Treaty of Versailles on June 28, 1919. ",
     "link": "https://en.wikipedia.org/wiki/Armistice_of_11_November_1918"
+  },
+  {
+    "date": "1914-07-28",
+    "title": "World War I begins",
+    "desc": "On July 28, 1914, one month after the assassination of Archduke Franz Ferdinand, Austria-Hungary declared war on Serbia. This pivotal action, initiated by a telegram from Vienna to Belgrade, triggered the alliance system and escalated the conflict into World War I. Germany had previously given \"blank cheque\" support, while Russia pledged to defend Serbia.",
+    "link": "https://en.wikipedia.org/wiki/July_Crisis"
+  },
+  {
+    "date": "1572-08-24",
+    "title": "The St. Bartholomew Massacre happened",
+    "desc": "The Saint Bartholomew's Day massacre in 1572 was a targeted group of assassinations and a wave of Catholic mob violence directed against the Huguenots during the French Wars of Religion.",
+    "link": "https://en.wikipedia.org/wiki/St._Bartholomew%27s_Day_massacre"
+  },
+  {
+    "date": "1945-02-23",
+    "title": "the flag raising on Iwo Jima",
+    "desc": "On February 23, 1945, during the Battle of Iwo Jima, U.S. Marines raised two flags atop Mount Suribachi. The second, larger flag-raising was captured in Joe Rosenthal’s iconic Pulitzer Prize-winning photograph, symbolizing victory and sacrifice. The event, featuring six men, boosted morale during the 36-day battle.",
+    "link": "https://www.archives.gov/research/still-pictures/highlights/flag-raising-on-iwo-jima"
+  },
+  {
+    "date": "1945-02-06",
+    "title": "Bob Marley was born",
+    "desc": "Bob Marley was born on February 6, 1945, in Nine Mile, Saint Ann Parish, Jamaica, to Cedella Malcolm and Norval Sinclair Marley. He grew up in rural Jamaica and later moved to Trench Town at age 9. His birthplace is now a popular tourist attraction known as the \"Spirit of Reggae\".",
+    "link": "https://en.wikipedia.org/wiki/Bob_Marley"
+  },
+  {
+    "date": "1945-02-06",
+    "title": "MacArthur announces Manila's capture, 5,000 prisoners liberated",
+    "desc": "General Douglas MacArthur announced the capture of Manila and the liberation of 5,000 prisoners. Yugoslav Partisans began the Mostar operation.",
+    "link": "https://www.youtube.com/watch?v=0ttS_is_zck&t=225"
+  },
+  {
+    "date": "2026-03-12",
+    "title": "This site was created",
+    "desc": "I had the idea to make this in 2022, but I didn't know how to use HTML, CSS, and JS to make it–only Python. On March 12th 2026, I was looking through my ideas list and realized I can make this, so I did–after 5 hours.",
+    "link": "https://github.com/Pattles/HistoryTimeline"
+  },
+  {
+    "date": "1781-03-13",
+    "title": "William Herschel sees what he thinks is a comet but actually discovers the planet Uranus",
+    "desc": "On March 13, 1781, astronomer William Herschel discovered Uranus while surveying stars in Gemini with a home-built telescope. Initially believing the object was a comet due to its movement, further observations of its near-circular orbit confirmed it was a new planet. Herschel proposed naming it Georgium Sidus (George’s Star) after King George III, though it was later named Uranus by Johann Bode.",
+    "link": "https://www.nasa.gov/history/240-years-ago-astronomer-william-herschel-identifies-uranus-as-the-seventh-planet/"
+  },
+  {
+    "date": "1781-03-13",
+    "title": "Karl Friedrich Schinkel was born",
+    "desc": "Prussian architect Karl Friedrich Schinkel (1781–1841) was a leading figure in Neoclassical and Gothic Revival architecture, best known for his iconic buildings in Berlin. His Altes Museum became a model for national art museums worldwide, and his Bauakademie is considered a forerunner of modern architecture.",
+    "link": "https://en.wikipedia.org/wiki/Karl_Friedrich_Schinkel"
   }
 ]
