@@ -13,6 +13,7 @@ Before you start anything, check:
 To start localhost:
 - open the project in Terminal
 - run 'nodemon server.js'
+  - OR: npm start
 - open http://localhost:3000/index.html
 You're done.
 
@@ -23,3 +24,8 @@ All the server.js stuff is written by Claude, so good luck with that if you ever
 Most of the HTML and CSS is written by yours truly, with some advice-garnering from Claude.
 
 Even with that, I spent 5 hours from start to finish on this project. Was it worth it? Probably not.
+
+Adding backups:
+```
+curl https://history-timeline-qt6j.onrender.com/api/events > backups/backup_$(date +%Y%m%d).json
+```
