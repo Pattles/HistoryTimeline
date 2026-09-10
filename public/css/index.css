@@ -8,6 +8,10 @@ body, html {
     background-color: #f7f2ea;;
 }
 
+body, html {
+  touch-action: manipulation; /* Disable zoom */
+}
+
 h3 {
     margin: 0;
     padding: 0;
