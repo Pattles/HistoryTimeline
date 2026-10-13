@@ -1,5 +1,5 @@
 require('dotenv').config();
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose'); // prevents clearing on accident
 const Event = require('../../db');
 
 mongoose.connect(process.env.MONGODB_URI)
