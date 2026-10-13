@@ -58,7 +58,7 @@
             <div class="footer-meta">
                 <div class="footer-meta__item">
                 <div class="footer-meta__dot"></div>
-                <p id="gate-open" style="text-decoration: underline; cursor: pointer">Updated May 15 2026</p>
+                <p id="gate-open" style="text-decoration: underline; cursor: pointer">Updated October 13 2026</p>
             </div>
             <div class="footer-meta">
                 <div class="footer-meta__item">
@@ -89,32 +89,58 @@
     </div>
     <div id="overlay-contribute" class="overlay blur" style="display: none;">
         <div class="overlay-container">
-            <div class="overlay-header column">
-                <h3 class="overlay-header__lead">Add Event</h3>
+
+            <div class="overlay-header">
+                <h3 class="overlay-header__lead">Manage Events</h3>
+                
+                <select id="mode-select" class="overlay-select">
+                    <option value="add">Add event</option>
+                    <option value="edit">Edit event</option>
+                    <option value="delete">Delete event</option>
+                </select>
+
             </div>
-            <div class="overlay-form column">
-                <div class="column">
+
+            <div class="overlay-form">
+
+                <div class="overlay-form__field" data-show-in="edit delete">
+                    <p class="overlay-form__lead">Event</p>
+                    <select id="event-select" class="overlay-select" style="color: #2c2416;">
+                        <option value="">Select event</option>
+                    </select>
+                </div>
+
+                <div class="overlay-form__field" data-show-in="add edit">
                     <p class="overlay-form__lead">Date</p>
                     <input id="contribute-date" class="overlay-form__date" type="date">
                 </div>
-                <div class="column">
+
+                <div class="overlay-form__field" data-show-in="add edit">
                     <p class="overlay-form__lead">Title</p>
                     <input id="contribute-title" class="overlay-form__input" type="text" placeholder="e.g. Redbull was founded">
                 </div>
-                <div class="column">
+
+                <div class="overlay-form__field" data-show-in="add edit">
                     <p class="overlay-form__lead">Description</p>
-                    <textarea id="contribute-desc" class="overlay-form__input" style="resize: vertical" placeholder="What happened?"></textarea>
+                    <textarea id="contribute-desc" class="overlay-form__input" style="resize: vertical" rows="5" placeholder="What happened?"></textarea>
                 </div>
-                <div class="column">
+
+                <div class="overlay-form__field" data-show-in="add edit">
                     <p class="overlay-form__lead">Source link</p>
                     <input id="contribute-link" class="overlay-form__input" type="text" placeholder="https://wikipedia.org/...">
                 </div>
+
             </div>
+
+
             <div class="overlay-actions row">
                 <button class="overlay-actions__button overlay-actions__cancel">Cancel</button>
-                <button class="overlay-actions__button overlay-actions__continue">Save event</button>
+                <button class="overlay-actions__button overlay-actions__continue" id="contribute-submit">Save event</button>
             </div>
+
         </div>
     </div>
+
+    
 </body>
 </html>

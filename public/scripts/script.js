@@ -1,5 +1,17 @@
-// Declaring important stuff
+// On page load
 let allEvents = []
+
+// On page load, load events
+function loadEvents() {
+    return fetch('/api/events')
+        .then(res => res.json())
+        .then(events => {
+            allEvents = events;
+            return events;
+        });
+};
+
+let eventsReady = loadEvents();
 
 // Formatting dates into readable ones
 function formatDate(dateStr) {
@@ -89,13 +101,6 @@ function handleRandom() {
 
 // On page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetching events from mongodb
-    fetch('/api/events')
-        .then(res => res.json())
-        .then(events => {
-            allEvents = events;
-        });
-
     // Changing the headline to today's date
     document.getElementById('section-events__lead').innerHTML = `SAMPLE - ${formatDate(new Date().toISOString().split('T')[0])}`;
 
