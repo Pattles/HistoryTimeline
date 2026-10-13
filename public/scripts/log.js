@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     case 'edit':
                         // Editing an event in db
-                           console.log(gatePass, typeof gatePass.value);
                         await editEvent(eventID, formDate, formTitle, formDesc, formLink, gatePass.value);
                         break;
 
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearContribute();
 
                 // Force reloading the page
-                // location.reload();
+                location.reload();
                 return
             })
 
