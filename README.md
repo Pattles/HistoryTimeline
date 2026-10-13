@@ -1,10 +1,10 @@
-*Last modified: March 12 2026*
+*Last modified: Oct 8 2026*
 
 This exists now..
 
 Before you start anything, check:
 > Is nodemon installed? 
-- npm install -g nodemon
+- `npm install -g nodemon`
 
 > Is nodejs installed? 
 - Install it yourself somewhere
@@ -16,6 +16,9 @@ To start localhost:
   - OR: npm start
 - open http://localhost:3000/index.html
 You're done.
+
+> Is something else being displayed on that port (Stratum for example)?
+- `lsof -ti:3000 | xargs kill`
 
 Try to break it? Work on improving it? Up to you..
 Hopefully I wrote enough comments for it not to be a nightmare to dissect later.

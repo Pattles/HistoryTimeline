@@ -22,11 +22,32 @@
     -webkit-backdrop-filter: blur(8px);
 }
 
+
 /* */
+.overlay-form {
+    padding: 1rem 2rem;
+    width: 22.5rem;
+    min-height: 5rem;
+}
+
+.overlay-select {
+    min-width: 12rem;
+    max-width: 100%;
+}
+
+.overlay-header,
+.overlay-form,
+.overlay-form__field {
+    display: flex;
+    flex-direction: column;
+}
+
 .overlay-header {
-    background-color: #18100a;
     align-items: center;
+    background-color: #18100a;
     padding: 2rem;
+    overflow: hidden;
+    gap: 1rem;
 }
 
 .overlay-header__lead {
@@ -44,10 +65,6 @@
     letter-spacing: 0;
     font-weight: 200;
     font-size: 0.8rem;
-}
-
-.overlay-form {
-    padding: 1rem 2rem;
 }
 
 .overlay-form__lead {

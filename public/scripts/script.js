@@ -1,5 +1,17 @@
-// Declaring important stuff
+// On page load
 let allEvents = []
+
+// On page load, load events
+function loadEvents() {
+    return fetch('/api/events')
+        .then(res => res.json())
+        .then(events => {
+            allEvents = events;
+            return events;
+        });
+};
+
+let eventsReady = loadEvents();
 
 // Formatting dates into readable ones
 function formatDate(dateStr) {
@@ -49,7 +61,7 @@ function handleGenerate() {
                 <div class="section-events__dot"></div>
                 <h4 class="section-events__headline">${event.title}</h4>
                 <p class="section-events__desc">${event.desc}</p>
-                <a class="section-events__desc" href="${event.link}">Read more</a>
+                <a class="section-events__desc" href="${event.link}" target="_blank">Read more</a>
             `;
             cardsContainer.appendChild(card);
         })
@@ -80,57 +92,15 @@ function handleRandom() {
             <div class="section-events__dot"></div>
             <h4 class="section-events__headline">${event.title}</h4>
             <p class="section-events__desc">${event.desc}</p>
-            <a class="section-events__desc" href="${event.link}">Read more</a>
+            <a class="section-events__desc" href="${event.link}" target="_blank">Read more</a>
         `;
         cardsContainer.appendChild(card);
     });
 
 }
 
-// Handling opening the Addnew modal
-function handleAddnewOpen() {
-    const modalAddnew = document.getElementById('modal-addnew')
-
-    // Making the popup visible on click
-    modalAddnew.style.display = "flex";
-};
-
-// Handling closing the Addnew modal
-function handleAddnewClose() {
-    const modalAddnew = document.getElementById('modal-addnew')
-
-    // Making the popup invisible on click
-    modalAddnew.style.display = "none";
-};
-
-// Handling submitting content from Addnew modal with content
-function handleAddnewSubmit() {
-    // Getting event date & time
-    const date = document.getElementById('input-addnewDate').value
-
-    // Getting event content
-    const title = document.getElementById('input-addnewTitle').value;
-    const desc = document.getElementById('input-addnewDesc').value;
-    const link = document.getElementById('input-addnewLink').value;
-
-    fetch('/add-event', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({date, title, desc, link})
-    }).then(() => {
-        location.reload();
-    });
-};
-
 // On page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetching events from mongodb
-    fetch('/api/events')
-        .then(res => res.json())
-        .then(events => {
-            allEvents = events;
-        });
-
     // Changing the headline to today's date
     document.getElementById('section-events__lead').innerHTML = `SAMPLE - ${formatDate(new Date().toISOString().split('T')[0])}`;
 
