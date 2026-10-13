@@ -49,7 +49,7 @@ function handleGenerate() {
                 <div class="section-events__dot"></div>
                 <h4 class="section-events__headline">${event.title}</h4>
                 <p class="section-events__desc">${event.desc}</p>
-                <a class="section-events__desc" href="${event.link}">Read more</a>
+                <a class="section-events__desc" href="${event.link}" target="_blank">Read more</a>
             `;
             cardsContainer.appendChild(card);
         })
@@ -80,7 +80,7 @@ function handleRandom() {
             <div class="section-events__dot"></div>
             <h4 class="section-events__headline">${event.title}</h4>
             <p class="section-events__desc">${event.desc}</p>
-            <a class="section-events__desc" href="${event.link}">Read more</a>
+            <a class="section-events__desc" href="${event.link}" target="_blank">Read more</a>
         `;
         cardsContainer.appendChild(card);
     });
