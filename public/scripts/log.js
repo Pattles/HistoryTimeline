@@ -1,5 +1,5 @@
 // Declaring important stuff
-const labels = { add: 'Add event', edit: 'Edit event', delete: 'Delete event'};
+const labels = { add: 'Add event', edit: 'Edit event' }; // , delete: 'Delete event'
 
 // Handles closing an overlay via 'cancel' button
 function closeOverlay(overlayObj, noteContent='') {
