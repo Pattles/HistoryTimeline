@@ -67,6 +67,12 @@ Create a `backups/` folder first, then run:
 curl https://history-timeline-qt6j.onrender.com/api/events > backups/backup_$(date +%Y%m%d).json
 ```
 
+## Ideas and Improvements
+- **Year view graphic.** A month grid for the selected year, with days that have events highlighted and clickable. Revisit at 150 to 200 entries, mostly from 2000 to 2026.
+- **Description length limit.** Cap descriptions at 350 characters, with a live counter in the form and a matching check in `validate` on the server.
+- **Rewrite the front-end JS.** Turn repeated code into functions, make helpers universal, add JSDoc descriptions to functions so they show up on hover, add comments when the reason isn't obvious, remove old and unused code.
+
+
 ## Notes
 
 - Try to break it. Work on improving it. Up to you.
