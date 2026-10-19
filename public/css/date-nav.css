@@ -1,0 +1,42 @@
+.date-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    padding-bottom: 0.5rem;
+}
+
+.date-nav__button {
+    color: #18100a;
+    max-width: 50%;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    .date-nav__button:hover {
+        border-color:  rgb(172, 126, 9);
+        color:  rgb(172, 126, 9);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .date-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .date-nav__button {
+        padding-block: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.date-nav__button--prev::before {
+    content: '← ';
+    margin-left: auto;     /* pushes the arrow to the far left */
+}
+
+.date-nav__button--next::after {
+    content: ' →';
+    margin-left: auto;     /* pushes the arrow to the far right */
+}

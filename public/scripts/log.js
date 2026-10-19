@@ -1,5 +1,25 @@
+// On page load, init variables
+let allEvents = []
+let currentDate = null
+
+// On page load, load events
+/**
+ * Fetches every event from the API and stores the result in `allEvents`.
+ * @returns {Promise<Array<{_id: string, date: string, title: string, desc: string, link?: string}>>}
+ *   Resolves with the fetched events. Call it again after an add or edit to refresh the list.
+ */
+async function loadEvents() {
+    return fetch('/api/events')
+        .then(res => res.json())
+        .then(events => {
+            allEvents = events;
+            return events;
+        });
+};
+
 // Declaring important stuff
 const labels = { add: 'Add event', edit: 'Edit event' }; // , delete: 'Delete event'
+const eventsReady = loadEvents();
 
 // Handles closing an overlay via 'cancel' button
 function closeOverlay(overlayObj, noteContent='') {
@@ -214,8 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eventSelect.addEventListener('change', () => {
         const capturedEvent = allEvents.filter(ev => ev._id === eventSelect.value)[0]
-
-        console.log(eventSelect.value); 
 
         const fields = ['date', 'title', 'desc', 'link'];
 

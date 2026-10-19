@@ -1,18 +1,3 @@
-// On page load
-let allEvents = []
-
-// On page load, load events
-function loadEvents() {
-    return fetch('/api/events')
-        .then(res => res.json())
-        .then(events => {
-            allEvents = events;
-            return events;
-        });
-};
-
-let eventsReady = loadEvents();
-
 // Formatting dates into readable ones
 function formatDate(dateStr) {
     const date = new Date(dateStr + 'T00:00:00');
@@ -27,21 +12,31 @@ function formatDate(dateStr) {
     return `${month} ${day}${suffix} ${year}`;
 };
 
-// # Adding a new card on button press
-function handleGenerate() {
+
+/**
+ * Draws the event cards, updates the heading, 
+ * Previous Date and Next Date buttons for a specific date.
+ * @param {string} isoDate - a date in YYYY-MM-DD format
+ */
+function displayCards(isoDate) {
+    const cardsContainer = document.getElementById('section-events__cards');
+    
     // Clearing everything first under the div
     document.getElementById('section-events__cards').innerHTML = '';
 
-    const cardsContainer = document.getElementById('section-events__cards');
-
-    // Getting all relevant events
-    const heroDate = document.getElementById('hero-date').value;
-    const results = allEvents.filter(event => event.date === heroDate);
+    // Getting all relevant events for selected date
+    const results = allEvents.filter(event => event.date === isoDate);
 
     // Changing headline -> What happened on [date]? – if no date/invalid date entered, default to random date
-    document.getElementById('section-events__lead').innerHTML = `${formatDate(heroDate || new Date().toISOString().split('T')[0])}`;
+    document.getElementById('section-events__lead').innerHTML = `${formatDate(isoDate || new Date().toISOString().split('T')[0])}`;
 
-    if (results.length === 0 || !heroDate) {
+    if (isoDate) {
+        document.getElementById('hero-date').value = isoDate;
+        populatePrevNextBtns(isoDate);
+    }
+
+    // If no events ARE NOT found or date is null/undefined
+    if (results.length === 0 || !isoDate) {
         // Create a bogus card
         const card = document.createElement('div');
         card.classList.add('section-events__card');
@@ -52,6 +47,8 @@ function handleGenerate() {
             <a class="section-events__desc" href="https://pserikov.com">Read more</a>
         `;
         cardsContainer.appendChild(card); 
+
+    // If events ARE found
     } else {
         // Creating a new card for each event
         results.forEach(event => {
@@ -66,7 +63,7 @@ function handleGenerate() {
             cardsContainer.appendChild(card);
         })
     }
-};
+}
 
 // # Generating random date
 function handleRandom() {
@@ -80,7 +77,13 @@ function handleRandom() {
     const randomDate = allDates[Math.floor(Math.random() * allDates.length)];
 
     // Changing headline -> May 1 2026 – if no date/invalid date entered, default to today's date
-    document.getElementById('section-events__lead').innerHTML = `${formatDate(randomDate)}`;
+    document.getElementById('section-events__lead').innerHTML = `${formatDate(randomDate)}`; 
+
+    // Populates 'previous date' and 'next date' buttons with text
+    populatePrevNextBtns(randomDate);
+
+    // Populates date input with target random date
+    document.getElementById('hero-date').value = randomDate;
 
     const results = allEvents.filter(event => event.date === randomDate);
 
@@ -97,6 +100,7 @@ function handleRandom() {
         cardsContainer.appendChild(card);
     });
 
+
 }
 
 // On page load
@@ -104,12 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Changing the headline to today's date
     document.getElementById('section-events__lead').innerHTML = `SAMPLE - ${formatDate(new Date().toISOString().split('T')[0])}`;
 
-    // Hero buttons
-    document.getElementById('hero-btnGen').addEventListener('click', handleGenerate);
-    document.getElementById('hero-btnRandom').addEventListener('click', handleRandom);
 
-    // Addnew modal
-    // document.getElementById('hero-btnAddnew').addEventListener('click', handleAddnewOpen);
-    // document.getElementById('modal-addnewClose').addEventListener('click', handleAddnewClose);
-    // document.getElementById('modal-addnewSubmit').addEventListener('click', handleAddnewSubmit);
+    document.getElementById('hero-btnRandom').addEventListener('click', handleRandom);
 });
