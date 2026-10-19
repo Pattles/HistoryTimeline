@@ -1,34 +1,75 @@
-*Last modified: Oct 8 2026*
+# History Timeline
 
-This exists now..
+A hand-curated archive of historically significant dates. Pick any date and see what happened on it.
 
-Before you start anything, check:
-> Is nodemon installed? 
-- `npm install -g nodemon`
+**Live site:** https://history-timeline-qt6j.onrender.com
 
-> Is nodejs installed? 
-- Install it yourself somewhere
+*Last modified: Oct 19 2026*
 
+---
 
-To start localhost:
-- open the project in Terminal
-- run 'nodemon server.js'
-  - OR: npm start
-- open http://localhost:3000/index.html
+## Requirements
+
+- [Node.js](https://nodejs.org/)
+- [nodemon](https://nodemon.io/), to restart the server automatically on changes:
+
+```bash
+  npm install -g nodemon
+```
+
+## Running it locally
+
+1. Open the project folder in Terminal.
+2. Install dependencies (first time only):
+
+```bash
+   npm install
+```
+
+3. Start the server:
+
+```bash
+   nodemon server.js
+```
+
+   or `npm start`.
+
+4. Open <http://localhost:3000/index.html>.
+
 You're done.
 
-> Is something else being displayed on that port (Stratum for example)?
-- `lsof -ti:3000 | xargs kill`
+## Configuration
 
-Try to break it? Work on improving it? Up to you..
-Hopefully I wrote enough comments for it not to be a nightmare to dissect later.
+Create a `.env` file in the project root:
 
-All the server.js stuff is written by Claude, so good luck with that if you ever decide to change anything.
-Most of the HTML and CSS is written by yours truly, with some advice-garnering from Claude.
-
-Even with that, I spent 5 hours from start to finish on this project. Was it worth it? Probably not.
-
-Adding backups:
 ```
+MONGODB_URI=your-mongodb-connection-string
+ADMIN_PASSWORD=your-contribute-password
+```
+
+> **Heads up:** if your local `.env` points at the same database as the live site, anything you add or edit locally changes the live site too.
+
+## Troubleshooting
+
+**Something else is already running on port 3000 (Stratum, for example):**
+
+```bash
+lsof -ti:3000 | xargs kill
+```
+
+Then start the server again.
+
+## Backups
+
+Create a `backups/` folder first, then run:
+
+```bash
 curl https://history-timeline-qt6j.onrender.com/api/events > backups/backup_$(date +%Y%m%d).json
 ```
+
+## Notes
+
+- Try to break it. Work on improving it. Up to you.
+- Hopefully there are enough comments that it isn't a nightmare to dissect later.
+- All the `server.js` stuff was written by Claude, so good luck if you ever decide to change anything. Most of the HTML and CSS is written by yours truly, with some advice-garnering from Claude.
+- The first version took 5 hours from start to finish. Was it worth it? Probably not.
