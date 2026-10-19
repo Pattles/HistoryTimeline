@@ -3,9 +3,12 @@
 <head>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/log.css">
+    <link rel="stylesheet" href="css/date-nav.css">
     <script src="scripts/script.js"></script>
     <script src="scripts/log.js"></script>
     <script src="scripts/footer.js"></script>
+    <script src="scripts/date-nav.js"></script>
+    <script src="scripts/init.js"></script>
     <script type="application/ld+json" src="">
         {
             "@context": "https://schema.org",
@@ -50,6 +53,10 @@
     </section>
     <section class="section-events">
         <div class="container">
+            <div class="date-nav">
+                <button class="date-nav__button date-nav__button--prev" data-nav="prev" data-date="">Previous date</button>
+                <button class="date-nav__button date-nav__button--next" data-nav="next" data-date="">Next date</button>
+            </div>
             <div class="section-events__lead">
                 <p id="section-events__lead" >Sample - May 1st 2026</p>
             </div>
