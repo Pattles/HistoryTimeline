@@ -7,7 +7,6 @@
 
 .date-nav__button {
     color: #18100a;
-    max-width: 50%;
     text-align: center;
 }
 
@@ -15,6 +14,10 @@
     .date-nav__button:hover {
         border-color:  rgb(172, 126, 9);
         color:  rgb(172, 126, 9);
+    }
+
+    .date-nav__button {
+        min-width: 10rem;
     }
 }
 
