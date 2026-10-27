@@ -4,7 +4,15 @@ A hand-curated archive of historically significant dates. Pick any date and see 
 
 **Live site:** https://history-timeline-qt6j.onrender.com
 
-*Last modified: Oct 19 2026*
+*Last modified: Oct 27 2026*
+
+## Color Palette
+- <span style="color: #18100a">#18100a</span>  — near-black dark brown (header background)
+- <span style="color: #c8a44a">#c8a44a</span> — antique gold (accents, tags, dots, year labels)
+- <span style="color: #f7f2ea;">#f7f2ea</span> — warm parchment (card background, header text)
+- <span style="color: #e0d9ce">#e0d9ce</span> — slightly darker parchment (outer background)
+- <span style="color: #d0c9b8">#d0c9b8</span> — muted tan (borders, divider)
+- <span style="color: #7a6e5a">#7a6e5a</span> / <span style="color: #8a7d65">#8a7d65</span> / <span style="color: #655a46">#655a46</span> — various warm grays (subtitle and body text at different opacities)
 
 ---
 
