@@ -44,7 +44,7 @@ function displayCards(isoDate) {
             <div class="section-events__dot"></div>
             <h4 class="section-events__headline">Nothing happened!</h4>
             <p class="section-events__desc">Just kidding, I haven\'t added anything for this date yet.</p>
-            <a class="section-events__desc" href="https://pserikov.com">Read more</a>
+            <a class="section-events__desc" href="https://www.pserikov.com/portfolio/history-timeline">Read more</a>
         `;
         cardsContainer.appendChild(card); 
 
